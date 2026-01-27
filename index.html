@@ -1,204 +1,272 @@
-<!DOCTYPE html>  <html lang="ar" dir="rtl">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>مطعم هامور المدينة</title>  
-<style>  
-body{margin:0;font-family:Tahoma, Arial;background:#000;color:#fff;}  
-header{background:linear-gradient(135deg,#000,#111);text-align:center;padding:20px;border-bottom:2px solid #f1c40f;}  
-header img.logo{width:120px;height:auto;border-radius:50%;border:5px solid #f1c40f;}  
-header h1{margin:5px 0;}  
-header p{color:#f1c40f;}  
-section{background:#111;margin:15px;padding:15px;border-radius:14px;box-shadow:0 0 15px rgba(255,215,0,0.1);}  
-h2{color:#f1c40f;border-bottom:1px solid #333;padding-bottom:6px;margin-bottom:10px;text-align:center;}  
-.cards{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;}  
-.card{background:#222;width:120px;padding:10px;border-radius:12px;text-align:center;cursor:pointer;transition:0.3s;border:2px solid transparent;}  
-.card img{width:100%;height:100px;object-fit:cover;border-radius:10px;margin-bottom:5px;}  
-.card:hover{border:2px solid #f1c40f;}  
-.quantity{background:#f1c40f;color:#000;font-weight:bold;padding:2px 6px;border-radius:6px;margin-top:5px;display:inline-block;}  
-#total-order-btn{width:90%;max-width:400px;margin:20px auto;display:block;background:#f1c40f;color:#000;padding:10px;font-weight:bold;border:none;border-radius:12px;cursor:pointer;font-size:16px;}  
-#order-summary{background:#222;margin:15px;padding:15px;border-radius:12px;display:none;}  
-footer{background:#000;color:#fff;text-align:center;padding:18px;border-top:2px solid #f1c40f;font-size:14px;}  
-footer span{color:#f1c40f;}  
-#comments-section{background:#111;margin:15px;padding:15px;border-radius:14px;}  
-.comment{background:#222;padding:8px;margin:5px 0;border-radius:8px;}  
-#add-comment{width:100%;padding:8px;margin-top:10px;border-radius:8px;border:none;}  
-#submit-comment{width:100%;padding:8px;margin-top:5px;background:#f1c40f;border:none;font-weight:bold;cursor:pointer;border-radius:8px;}  
-</style>  
-</head>  
-<body>  
-<header>  
-<img src="https://i.postimg.cc/MTwbzZWg/file-00000000557c71f4bccda809a3278673.png" alt="لوجو المطعم" class="logo">  
-<h1>مطعم هامور المدينة</h1>  
-<p>للمأكولات البحرية</p>  
-</header>  <!-- قسم الأصناف -->  <section id="menu-section">  
-<!-- الأسماك -->  
-<h2>🐟 قسم الأسماك (بالكيلو)</h2>  
-<div class="cards" id="fish-section"></div>  <!-- الطواجن والمكرونات -->  <h2>🍲 الطواجن والمكرونات</h2>  
-<div class="cards" id="pasta-section"></div>  <!-- الوجبات -->  <h2>🍽️ الوجبات</h2>  
-<div class="cards" id="meals-section"></div>  <!-- الشوربة والأرز -->  <h2>🍜 الشوربة والأرز</h2>  
-<div class="cards" id="soup-rice-section"></div>  <!-- المقبلات والسندوتشات -->  <h2>🥗 المقبلات والسندوتشات</h2>  
-<div class="cards" id="snacks-section"></div>  
-</section>  <!-- زر الطلب وعرض التفاصيل -->  <button id="total-order-btn">اختيار الطلب</button>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مطعم السعادة</title>
+<style>
+:root{
+  --bg:#0b0f1a; --card:#111827; --muted:#9ca3af;
+  --accent:#ff8a3d; --accent2:#ffb26b; --white:#fff;
+  --radius:16px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma, Arial;background:linear-gradient(180deg,#05070f,#0b0f1a);color:#fff;}
+.ramadan-banner{position:sticky;top:0;z-index:20;background:linear-gradient(90deg,#ff8a3d,#ffb26b);text-align:center;padding:10px;font-weight:bold;color:#111;}
+header{position:relative;text-align:center;padding:20px 14px 14px;}
+.logo-bg{width:100%;max-width:380px;margin:10px auto 0;transition:opacity .3s;}
+.logo-bg img{width:100%;opacity:.5;}
+.store-title{font-size:20px;margin:8px 0}
+.badge{display:inline-block;padding:8px 16px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;font-weight:bold;}
+.search{margin:14px auto 10px;max-width:680px;}
+.search input{width:100%;padding:14px;border-radius:999px;border:none;outline:none;background:#0f172a;color:#fff;}
+.tabs-wrapper{position:relative;background:#0b0f1a;padding:10px 0;transition:all .3s;}
+.tabs-wrapper.fixed{position:sticky;top:42px;z-index:19;border-bottom:1px solid #111827;}
+.tabs{display:flex;gap:10px;overflow-x:auto;padding:0 10px;}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:10px 16px;border-radius:999px;background:#0f172a;border:1px solid #111827;white-space:nowrap;cursor:pointer;}
+.tab.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;font-weight:bold;}
+.container{max-width:980px;margin:20px auto;padding:14px;}
+.card{background:linear-gradient(180deg,#0f172a,#020617);border-radius:16px;padding:14px;margin-bottom:14px;border:1px solid #111827;}
+.product{display:grid;grid-template-columns:140px 1fr;gap:14px;}
+.img{width:140px;height:110px;background:#1f2937;border-radius:14px;display:flex;align-items:center;justify-content:center;}
+.row{display:flex;justify-content:space-between;margin-top:10px;align-items:center;}
+.btn{width:36px;height:36px;border:none;border-radius:12px;background:#0f172a;color:#fff;cursor:pointer;}
+.btn.plus{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;}
+.toggle-btns{margin-top:8px;display:flex;gap:10px;}
+.toggle-btn{flex:1;padding:6px 0;border-radius:12px;border:none;cursor:pointer;background:#0f172a;color:#fff;}
+.toggle-btn.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;font-weight:bold;}
+.footer{position:sticky;bottom:0;background:#020617;padding:14px;}
+.summary{max-width:980px;margin:auto;display:flex;justify-content:space-between;}
+.cta{padding:14px 18px;border-radius:14px;border:none;background:linear-gradient(90deg,var(--accent),var(--accent2));font-weight:bold;}
+#welcome{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:100;}
+#welcome .content{background:#111827;padding:20px;border-radius:16px;text-align:center;}
+#welcome button{margin-top:15px;padding:10px 20px;border:none;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent2));font-weight:bold;}
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:200;}
+.modal.active{display:flex;}
+.box{background:#020617;border-radius:16px;padding:20px;max-width:400px;width:90%;}
+.switch{display:flex; gap:10px; margin-bottom:14px;}
+.sw{flex:1;text-align:center;padding:12px;cursor:pointer;border-radius:12px;background:#0f172a;}
+.sw.active{background:linear-gradient(90deg,var(--accent),var(--accent2)); font-weight:bold; color:#111;}
+.field input{width:100%;padding:12px;border-radius:12px;border:none;background:#0f172a;color:#fff;margin-bottom:10px;}
+.actions{display:flex; gap:10px;}
+.ghost{background:#0f172a; color:#fff;}
+</style>
+</head>
+<body>
 
-<div id="order-summary">  
-<h3>تفاصيل الطلب:</h3>  
-<div id="order-items"></div>  
-<h4>الإجمالي: <span id="order-total">0</span> ريال</h4>  
-<button id="whatsapp-btn">توصيل الآن</button>  
-</div>  <!-- قسم الكومنتات -->  <section id="comments-section">  
-<h2>💬 تعليقات العملاء</h2>  
-<div id="comments-list"></div>  
-<input type="text" id="add-comment" placeholder="اكتب تعليقك هنا...">  
-<button id="submit-comment">إرسال التعليق</button>  
-</section>  <footer>  
-جميع الحقوق محفوظة &copy; <span>مطعم هامور المدينة</span>  
-</footer>  <script>  
-// كل الأصناف  
-const menuItems = {  
-fish:[  
-{name:"هامور", price:80, img:"https://i.postimg.cc/L89SHFqY/logo.png"},  
-{name:"ناجل", price:130, img:"https://i.postimg.cc/HsQS6JkL/images-(2).jpg"},  
-{name:"شعر", price:50,img:"https://via.placeholder.com/120x100.png?text=شعر"},  
-{name:"سلطان ابراهيم", price:45,img:"https://i.postimg.cc/qvDvSvmk/images-(3).jpg"},  
-{name:"سلمون", price:100,img:"https://i.postimg.cc/pLsJSKb9/images-(4).jpg"},  
-{name:"استاكوزا", price:100,img:"https://i.postimg.cc/3xxg2Wyj/58f611b9-7a4d-4235-96f9-eed695b21093-1000x1000-m-N2VFO8ELIQMx7ra06X0zarc-HBx-Li-GCjbu-Yw-Zd-Xt.png"},
-{name:"شباية", price:60,img:"https://via.placeholder.com/120x100.png?text=شباية"},  
-{name:"كابوريا", price:45,img:"https://i.postimg.cc/Vs7sd68z/images-(5).jpg"},  
-{name:"بلطي (مقلي - مشوي)", price:45,img:"https://i.postimg.cc/SRjhW6hQ/20170102-185000.jpg"},  
-{name:"بوري", price:45,img:"https://via.placeholder.com/120x100.png?text=بوري"},  
-{name:"قاروص", price:60,img:"https://via.placeholder.com/120x100.png?text=قاروص"},  
-{name:"دنيس", price:55,img:"https://via.placeholder.com/120x100.png?text=دنيس"},  
-{name:"جمبري", price:80,img:"https://via.placeholder.com/120x100.png?text=جمبري"},  
-{name:"ماكريل", price:20,img:"https://via.placeholder.com/120x100.png?text=ماكريل"}  
-],  
-pasta:[  
-{name:"طاجن جمبري صوص أحمر", price:30,img:"https://via.placeholder.com/120x100.png?text=طاجن+جمبري+أحمر"},  
-{name:"طاجن جمبري صوص أبيض", price:35,img:"https://via.placeholder.com/120x100.png?text=طاجن+جمبري+أبيض"},  
-{name:"طاجن سي فود صوص أبيض", price:35,img:"https://via.placeholder.com/120x100.png?text=طاجن+سي+فود+أبيض"},  
-{name:"طاجن فيليه صوص أبيض", price:28,img:"https://via.placeholder.com/120x100.png?text=طاجن+فيليه+أبيض"},  
-{name:"طاجن فيليه صوص أحمر", price:20,img:"https://via.placeholder.com/120x100.png?text=طاجن+فيليه+أحمر"},  
-{name:"مكرونة جمبري صوص أحمر", price:20,img:"https://via.placeholder.com/120x100.png?text=مكرونة+جمبري+أحمر"},  
-{name:"مكرونة جمبري صوص أبيض", price:25,img:"https://via.placeholder.com/120x100.png?text=مكرونة+جمبري+أبيض"},  
-{name:"مكرونة سي فود صوص أبيض", price:25,img:"https://via.placeholder.com/120x100.png?text=مكرونة+سي+فود+أبيض"},  
-{name:"مكرونة سي فود صوص أحمر", price:20,img:"https://via.placeholder.com/120x100.png?text=مكرونة+سي+فود+أحمر"}  
-],  
-meals:[  
-{name:"وجبة سمك بلطي", price:25,img:"https://via.placeholder.com/120x100.png?text=وجبة+بلطي"},  
-{name:"وجبة سمك بوري", price:30,img:"https://via.placeholder.com/120x100.png?text=وجبة+بوري"},  
-{name:"وجبة فيليه", price:25,img:"https://via.placeholder.com/120x100.png?text=وجبة+فيليه"},  
-{name:"وجبة جمبري مقلي", price:25,img:"https://via.placeholder.com/120x100.png?text=جمبري+مقلي"},  
-{name:"وجبة جمبري مشوي", price:30,img:"https://via.placeholder.com/120x100.png?text=جمبري+مشوي"},  
-{name:"وجبة مكس", price:35,img:"https://via.placeholder.com/120x100.png?text=وجبة+مكس"},  
-{name:"وجبة ماكريل", price:20,img:"https://via.placeholder.com/120x100.png?text=وجبة+ماكريل"}  
-],  
-soupRice:[  
-{name:"شوربة سي فود", price:20,img:"https://via.placeholder.com/120x100.png?text=شوربة+سي+فود"},  
-{name:"شوربة جمبري", price:15,img:"https://via.placeholder.com/120x100.png?text=شوربة+جمبري"},  
-{name:"أرز سي فود", price:18,img:"https://via.placeholder.com/120x100.png?text=أرز+سي+فود"},  
-{name:"أرز جمبري", price:12,img:"https://via.placeholder.com/120x100.png?text=أرز+جمبري"},  
-{name:"أرز صيادية", price:7,img:"https://via.placeholder.com/120x100.png?text=أرز+صيادية"},  
-{name:"أرز أبيض", price:6,img:"https://via.placeholder.com/120x100.png?text=أرز+أبيض"}  
-],  
-snacks:[  
-{name:"ملوحة جمبري", price:15,img:"https://via.placeholder.com/120x100.png?text=ملوحة+جمبري"},  
-{name:"ملوحة سادة", price:5,img:"https://via.placeholder.com/120x100.png?text=ملوحة+سادة"},  
-{name:"سلطة خضراء", price:4,img:"https://via.placeholder.com/120x100.png?text=سلطة+خضراء"},  
-{name:"سلطة بابا غنوج", price:4,img:"https://via.placeholder.com/120x100.png?text=سلطة+بابا+غنوج"},  
-{name:"سلطة طحينة", price:2,img:"https://via.placeholder.com/120x100.png?text=سلطة+طحينة"},  
-{name:"سلطة حارة", price:1,img:"https://via.placeholder.com/120x100.png?text=سلطة+حارة"},  
-{name:"ساندوتش جمبري", price:15,img:"https://via.placeholder.com/120x100.png?text=ساندوتش+جمبري"},  
-{name:"ساندوتش فيليه", price:10,img:"https://via.placeholder.com/120x100.png?text=ساندوتش+فيليه"},  
-{name:"ساندوتش كلماري", price:12,img:"https://via.placeholder.com/120x100.png?text=ساندوتش+كلماري"}  
-]  
-};  
+<div class="ramadan-banner">✨ رمضان كريم ✨</div>
+
+<header>
+  <div class="logo-bg" id="logoBg">
+    <img src="https://i.postimg.cc/MTwbzZWg/file-00000000557c71f4bccda809a3278673.png.png">
+  </div>
   
-// دالة إنشاء الكروت  
-function createCards(sectionId, items){  
-  const section = document.getElementById(sectionId);  
-  items.forEach(item=>{  
-    const div = document.createElement('div');  
-    div.classList.add('card');  
-    div.dataset.name = item.name;  
-    div.dataset.price = item.price;  
-    div.innerHTML = `<img src="${item.img}" alt="${item.name}">  
-                     <div>${item.name}</div><div>${item.price} ريال</div><div class="quantity">0</div>`;  
-    div.addEventListener('click',()=>{  
-      let q = parseInt(div.querySelector('.quantity').textContent);  
-      q++;  
-      div.querySelector('.quantity').textContent = q;  
-    });  
-    section.appendChild(div);  
-  });  
-}  
-  
-// توليد الكروت لكل الأقسام  
-createCards('fish-section', menuItems.fish);  
-createCards('pasta-section', menuItems.pasta);  
-createCards('meals-section', menuItems.meals);  
-createCards('soup-rice-section', menuItems.soupRice);  
-createCards('snacks-section', menuItems.snacks);  
-  
-// زر اختيار الطلب  
-document.getElementById('total-order-btn').addEventListener('click',()=>{  
-  const allCards = document.querySelectorAll('.card');  
-  let orderItems = [];  
-  let total = 0;  
-  allCards.forEach(c=>{  
-    let q = parseInt(c.querySelector('.quantity').textContent);  
-    if(q>0){  
-      orderItems.push(`${c.dataset.name} ×${q} = ${c.dataset.price*q} ريال`);  
-      total += c.dataset.price*q;  
-    }  
-  });  
-  if(orderItems.length===0){  
-    alert('لم يتم اختيار أي صنف!');  
-    return;  
-  }  
-  document.getElementById('order-items').innerHTML = orderItems.join('<br>');  
-  document.getElementById('order-total').textContent = total;  
-  document.getElementById('order-summary').style.display='block';  
-});  
-  
-// زر توصيل واتساب  
-document.getElementById('whatsapp-btn').addEventListener('click',()=>{  
-  const items = document.getElementById('order-items').innerText;  
-  let restaurantNumber = '966511868061'; // حط هنا رقم المطعم  
-  let url = `https://wa.me/${restaurantNumber}?text=` + encodeURIComponent('مرحبا، أريد الطلب:\n'+items);  
-  window.open(url,'_blank');  
-});  
-  
-// كومنتات عشوائية  
-let randomComments = [  
-  "أطيب مأكولات بحرية جربتها في حياتي!",  
-  "الأسماك طازجة جدًا والخدمة ممتازة.",  
-  "الطواجن والمكرونات رهيبة جدًا، أنصح بها.",  
-  "وصل الطلب بسرعة والطعم ممتاز.",  
-  "الوجبات متنوعة والأسعار مناسبة.",  
-  "أفضل مطعم سمك في المدينة.",  
-  "الجمبري المشوي طعمه لا يقاوم!",  
-  "خدمة العملاء رائعة جدًا."  
-];  
-function showComments(){  
-  const commentsDiv = document.getElementById('comments-list');  
-  commentsDiv.innerHTML='';  
-  randomComments.forEach(c=>{  
-    const div = document.createElement('div');  
-    div.classList.add('comment');  
-    div.textContent=c;  
-    commentsDiv.appendChild(div);  
-  });  
-}  
-showComments();  
-  
-// إضافة كومنت جديد من المستخدم  
-document.getElementById('submit-comment').addEventListener('click',()=>{  
-  const input = document.getElementById('add-comment');  
-  const text = input.value.trim();  
-  if(text==='') return;  
-  randomComments.unshift(text);  
-  input.value='';  
-  showComments();  
-});  
-</script>  </body>  
-</html>
+  <div class="badge">متجر موثوق</div>
+
+<!-- أيقونات السوشيال -->
+<div class="social-icons" style="margin-top:10px; display:flex; justify-content:center; gap:12px;">
+  <a href="https://www.facebook.com/share/17RQKSHdkL/" id="linkWhats" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#25D366" width="36" height="36">
+      <path d="M12.04 2C6.48 2 2 6.48 2 12c0 2.12.61 4.07 1.65 5.71L2 22l4.33-1.65C7.93 21.39 9.88 22 12 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm5.44 14.5c-.23.66-1.31 1.26-1.8 1.34-.46.08-1.03.11-2.43-.57-2.4-1.07-3.93-3.7-4.05-3.88-.12-.18-1-1.24-1-2.37 0-1.13.66-1.6.9-1.82.24-.23.52-.28.7-.28.18 0 .35 0 .5.01.16.01.37-.06.57.42.19.48.64 1.66.7 1.78.06.12.1.27.02.43-.07.15-.11.25-.23.39-.12.14-.25.31-.35.44-.12.14-.25.28-.11.56.14.28.61 1.01 1.31 1.63.9.8 1.66 1.05 1.88 1.17.22.12.35.1.48-.06.12-.16.5-.58.63-.78.13-.2.27-.16.46-.1.19.06 1.2.56 1.41.66.21.1.35.15.4.23.05.09.05.52-.18 1.18z"/>
+    </svg>
+  </a>
+  <a href="https://www.facebook.com/share/17RQKSHdkL/" id="linkFB" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#1877F2" width="36" height="36">
+      <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.494v-9.294H9.691v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.796.143v3.24l-1.918.001c-1.504 0-1.796.716-1.796 1.765v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.675V1.325C24 .593 23.407 0 22.675 0z"/>
+    </svg>
+  </a>
+  <a href="https://www.facebook.com/share/17RQKSHdkL/" id="linkTT" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FFFFFF" width="36" height="36">
+      <path d="M12.004 2.002v12.312c-.002 3.214-2.616 5.824-5.83 5.826-3.21.002-5.824-2.61-5.826-5.824s2.614-5.824 5.824-5.826h.002v2.626h-.002c-1.763 0-3.198 1.435-3.198 3.2s1.435 3.198 3.2 3.198c1.767 0 3.202-1.433 3.2-3.2V5.994h4.005c.016 1.105.92 2.007 2.028 2.025v4.286c-3.096-.156-5.558-2.677-5.644-5.768z"/>
+    </svg>
+  </a>
+</div>
+  <div class="search"><input placeholder="ابحث عن منتج…"></div>
+
+  <div class="tabs-wrapper" id="tabsWrap">
+    <div class="tabs">
+      <div class="tab active" onclick="setCat('الأسماك',this)">الأسماك</div>
+      <div class="tab" onclick="setCat('الطواجن',this)">الطواجن</div>
+      <div class="tab" onclick="setCat('الوجبات',this)">الوجبات</div>
+      <div class="tab" onclick="setCat('المكرونات',this)">المكرونات</div>
+      <div class="tab" onclick="setCat('المقبلات',this)">المقبلات</div>
+      <div class="tab" onclick="setCat('السندوتشات',this)">السندوتشات</div>
+      <div class="tab" onclick="setCat('الأرز',this)">الأرز</div>
+      <div class="tab" onclick="setCat('الشوربة',this)">الشوربة</div>
+    </div>
+  </div>
+</header>
+
+<div class="container" id="list"></div>
+
+<div class="footer">
+  <div class="summary">
+    <div>الإجمالي: <b id="total">0</b> ريال</div>
+    <button class="cta" onclick="openConfirm()">تأكيد الطلب</button>
+  </div>
+</div>
+
+<div id="welcome">
+  <div class="content">
+     ‏شكرا لك على تواصلك مع مطعم هامور المدينة للمأكولات البحرية. 🐠🐟🐬
+    <br>
+    <button onclick="this.parentElement.parentElement.style.display='none'">موافق</button>
+  </div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="box">
+    <h3>تأكيد طلبك</h3>
+    <div class="switch">
+      <div class="sw active" id="swIn" onclick="setMode('in')">🍽️ بالمطعم</div>
+      <div class="sw" id="swOut" onclick="setMode('out')">🛵 توصيل</div>
+    </div>
+    <div class="field" id="tableField"><input id="tableNo" placeholder="أدخل رقم الطاولة"></div>
+    <div class="actions">
+      <button class="cta" onclick="sendWhats()">تأكيد وإرسال واتساب</button>
+      <button class="cta ghost" onclick="closeConfirm()">رجوع</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const WHATSAPP_NUMBER = '+966511868061';
+let currentCat='الأسماك';
+let order={items:[],total:0};
+
+// المنتجات
+const products=[
+  {id:1,cat:'الأسماك',name:'هامور',price:80},{id:2,cat:'الأسماك',name:'ناجل',price:130},
+  {id:3,cat:'الأسماك',name:'شعور',price:50},{id:4,cat:'الأسماك',name:'سلطان إبراهيم',price:40},
+  {id:5,cat:'الأسماك',name:'سلمون',price:100},{id:6,cat:'الأسماك',name:'استاكوزا',price:100},
+  {id:7,cat:'الأسماك',name:'كباية',price:60},{id:8,cat:'الأسماك',name:'كابوريا',price:45},
+  {id:9,cat:'الأسماك',name:'بلطي مقلي مشوي',price:25},{id:10,cat:'الأسماك',name:'بوري',price:45},
+  {id:11,cat:'الأسماك',name:'قاروص',price:60},{id:12,cat:'الأسماك',name:'دنيس',price:55},
+  {id:13,cat:'الأسماك',name:'حمام',price:50},{id:14,cat:'الأسماك',name:'ماكريل',price:25},
+
+  {id:15,cat:'الطواجن',name:'طاجن جمبري صوص أحمر',price:30},{id:16,cat:'الطواجن',name:'طاجن جمبري صوص أبيض',price:35},
+  {id:17,cat:'الطواجن',name:'طاجن سي فود صوص أبيض',price:35},{id:18,cat:'الطواجن',name:'طاجن فيليه صوص أبيض',price:28},
+  {id:19,cat:'الطواجن',name:'طاجن فيليه صوص أحمر',price:20},
+
+  {id:20,cat:'الوجبات',name:'وجبة سمك بلطي',price:25},{id:21,cat:'الوجبات',name:'وجبة سمك بوري',price:40},
+  {id:22,cat:'الوجبات',name:'وجبة فيليه',price:25},{id:23,cat:'الوجبات',name:'وجبة جمبري مقلي',price:25},
+  {id:24,cat:'الوجبات',name:'وجبة جمبري بروستد',price:40},{id:25,cat:'الوجبات',name:'وجبة جمبري مشوي',price:40},
+  {id:26,cat:'الوجبات',name:'وجبة مكس مشوي أو مقلي',price:35},{id:27,cat:'الوجبات',name:'وجبة ماكريل',price:20},
+
+  {id:28,cat:'المكرونات',name:'مكرونة جمبري صوص أحمر',price:20},{id:29,cat:'المكرونات',name:'مكرونة جمبري صوص أبيض',price:25},
+  {id:30,cat:'المكرونات',name:'مكرونة سي فود صوص أبيض',price:25},{id:31,cat:'المكرونات',name:'مكرونة سي فود صوص أحمر',price:20},
+
+  {id:32,cat:'المقبلات',name:'ملوخية جمبري',price:15},{id:33,cat:'المقبلات',name:'ملوخية سادة',price:5},
+  {id:34,cat:'المقبلات',name:'سلطة خضراء',price:4},{id:35,cat:'المقبلات',name:'سلطة بابا غنوج',price:4},
+  {id:36,cat:'المقبلات',name:'سلطة طحينة',price:1},{id:37,cat:'المقبلات',name:'سلطة حار',price:1},
+
+  {id:38,cat:'السندوتشات',name:'سندوتش جمبري',price:15},{id:39,cat:'السندوتشات',name:'سندوتش فيليه',price:10},
+  {id:40,cat:'السندوتشات',name:'سندوتش كالماري',price:12},
+
+  {id:41,cat:'الأرز',name:'أرز سي فود',price:18},{id:42,cat:'الأرز',name:'أرز جمبري',price:10},
+  {id:43,cat:'الأرز',name:'أرز صيادية',price:7},{id:44,cat:'الأرز',name:'أرز أبيض',price:6},
+
+  {id:45,cat:'الشوربة',name:'شوربة سي فود',price:20},{id:46,cat:'الشوربة',name:'شوربة جمبري',price:15}
+];
+
+const list=document.getElementById('list');
+
+function render(){
+  list.innerHTML='';
+  products.filter(p=>p.cat===currentCat).forEach(p=>{
+    let it=order.items.find(x=>x.id===p.id);
+    if(!it){it={id:p.id,price:p.price,qty:0,name:p.name,type:'عادي'}; order.items.push(it);}
+    list.innerHTML+=`
+      <div class="card">
+        <div class="product">
+          <div class="img">صورة</div>
+          <div>
+            <b>${p.name}</b>
+            <div class="row">
+              <div id="price-${p.id}">${it.price} ريال</div>
+              <div>
+                <button class="btn" onclick="dec(${p.id})">-</button>
+                ${it.qty}
+                <button class="btn plus" onclick="inc(${p.id})">+</button>
+              </div>
+            </div>
+            <div class="toggle-btns">
+              <button class="toggle-btn ${it.type==='عادي'?'active':''}" onclick="setType(${p.id},'عادي')">عادي</button>
+              <button class="toggle-btn ${it.type==='حراري'?'active':''}" onclick="setType(${p.id},'حراري')">حراري</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  });
+  calc();
+}
+
+function setType(id,type){
+  let it=order.items.find(x=>x.id===id);
+  if(!it) return;
+  it.type=type;
+  it.price = type==='عادي' ? products.find(x=>x.id===id).price : products.find(x=>x.id===id).price+5;
+  render();
+}
+
+function setCat(c,e){
+  currentCat=c;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  e.classList.add('active');
+  render();
+}
+
+function inc(id){
+  let it=order.items.find(x=>x.id===id);
+  if(!it) return;
+  it.qty++; render();
+}
+
+function dec(id){
+  let it=order.items.find(x=>x.id===id);
+  if(!it) return;
+  it.qty--;
+  if(it.qty<=0) order.items=order.items.filter(x=>x.id!==id);
+  render();
+}
+
+function calc(){
+  document.getElementById('total').innerText=
+    order.items.reduce((s,i)=>s+i.price*i.qty,0);
+}
+
+const logo=document.getElementById('logoBg');
+const tabsWrap=document.getElementById('tabsWrap');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY===0){logo.style.opacity='1';tabsWrap.classList.remove('fixed');}
+  else{logo.style.opacity='0';tabsWrap.classList.add('fixed');}
+});
+
+const modal=document.getElementById('modal');
+let mode='in';
+function openConfirm(){modal.classList.add('active');}
+function closeConfirm(){modal.classList.remove('active');}
+function setMode(m){
+  mode=m;
+  document.getElementById('swIn').classList.toggle('active', m==='in');
+  document.getElementById('swOut').classList.toggle('active', m==='out');
+  document.getElementById('tableField').style.display = m==='in'?'block':'none';
+}
+
+function sendWhats(){
+  if(order.items.length===0){alert('اختَر منتجات أولاً'); return;}
+  let msg='طلب جديد:%0A';
+  order.items.forEach(i=>{msg+=`- ${i.name} (${i.type}) × ${i.qty} = ${i.price*i.qty} ريال%0A`;});
+  msg+=`%0Aالإجمالي: ${order.items.reduce((s,i)=>s+i.price*i.qty,0)} ريال`;
+  if(mode==='in'){
+    const t=document.getElementById('tableNo').value||'غير محدد';
+    msg+=`%0Aرقم الطاولة: ${t}`;
+  }else{msg+=`%0Aطريقة التوصيل: توصيل`;}
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,'_blank');
+}
+
+render();
+</script>
+</body>
+  </html>
