@@ -1,272 +1,526 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مطعم السعادة</title>
-<style>
-:root{
-  --bg:#0b0f1a; --card:#111827; --muted:#9ca3af;
-  --accent:#ff8a3d; --accent2:#ffb26b; --white:#fff;
-  --radius:16px;
+<!DOCTYPE html>  <html lang="ar" dir="rtl">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>مطعم السعادة</title>  
+<style>  
+
+
+
+
+.social-icons a {
+  display: inline-block;
+  transform: translateY(0);
+  animation: floatIcon 3s ease-in-out infinite;
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:Tahoma, Arial;background:linear-gradient(180deg,#05070f,#0b0f1a);color:#fff;}
-.ramadan-banner{position:sticky;top:0;z-index:20;background:linear-gradient(90deg,#ff8a3d,#ffb26b);text-align:center;padding:10px;font-weight:bold;color:#111;}
-header{position:relative;text-align:center;padding:20px 14px 14px;}
-.logo-bg{width:100%;max-width:380px;margin:10px auto 0;transition:opacity .3s;}
-.logo-bg img{width:100%;opacity:.5;}
-.store-title{font-size:20px;margin:8px 0}
-.badge{display:inline-block;padding:8px 16px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;font-weight:bold;}
-.search{margin:14px auto 10px;max-width:680px;}
-.search input{width:100%;padding:14px;border-radius:999px;border:none;outline:none;background:#0f172a;color:#fff;}
-.tabs-wrapper{position:relative;background:#0b0f1a;padding:10px 0;transition:all .3s;}
-.tabs-wrapper.fixed{position:sticky;top:42px;z-index:19;border-bottom:1px solid #111827;}
-.tabs{display:flex;gap:10px;overflow-x:auto;padding:0 10px;}
-.tabs::-webkit-scrollbar{display:none}
-.tab{padding:10px 16px;border-radius:999px;background:#0f172a;border:1px solid #111827;white-space:nowrap;cursor:pointer;}
-.tab.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;font-weight:bold;}
-.container{max-width:980px;margin:20px auto;padding:14px;}
-.card{background:linear-gradient(180deg,#0f172a,#020617);border-radius:16px;padding:14px;margin-bottom:14px;border:1px solid #111827;}
-.product{display:grid;grid-template-columns:140px 1fr;gap:14px;}
-.img{width:140px;height:110px;background:#1f2937;border-radius:14px;display:flex;align-items:center;justify-content:center;}
-.row{display:flex;justify-content:space-between;margin-top:10px;align-items:center;}
-.btn{width:36px;height:36px;border:none;border-radius:12px;background:#0f172a;color:#fff;cursor:pointer;}
-.btn.plus{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;}
-.toggle-btns{margin-top:8px;display:flex;gap:10px;}
-.toggle-btn{flex:1;padding:6px 0;border-radius:12px;border:none;cursor:pointer;background:#0f172a;color:#fff;}
-.toggle-btn.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;font-weight:bold;}
-.footer{position:sticky;bottom:0;background:#020617;padding:14px;}
-.summary{max-width:980px;margin:auto;display:flex;justify-content:space-between;}
-.cta{padding:14px 18px;border-radius:14px;border:none;background:linear-gradient(90deg,var(--accent),var(--accent2));font-weight:bold;}
-#welcome{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:100;}
-#welcome .content{background:#111827;padding:20px;border-radius:16px;text-align:center;}
-#welcome button{margin-top:15px;padding:10px 20px;border:none;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent2));font-weight:bold;}
-.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:200;}
-.modal.active{display:flex;}
-.box{background:#020617;border-radius:16px;padding:20px;max-width:400px;width:90%;}
-.switch{display:flex; gap:10px; margin-bottom:14px;}
-.sw{flex:1;text-align:center;padding:12px;cursor:pointer;border-radius:12px;background:#0f172a;}
-.sw.active{background:linear-gradient(90deg,var(--accent),var(--accent2)); font-weight:bold; color:#111;}
-.field input{width:100%;padding:12px;border-radius:12px;border:none;background:#0f172a;color:#fff;margin-bottom:10px;}
+
+.social-icons a:nth-child(2) {
+  animation-delay: 0.5s; /* WhatsApp */
+}
+.social-icons a:nth-child(3) {
+  animation-delay: 1s; /* TikTok */
+}
+
+@keyframes floatIcon {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translateY(-10px); opacity: 1; }
+  70% { transform: translateY(0); opacity: 1; }
+  90% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root{  
+  --bg:#0b0f1a; --card:#111827; --muted:#9ca3af;  
+  --accent:#ff8a3d; --accent2:#ffb26b; --white:#fff;  
+  --radius:16px;  
+}  
+*{box-sizing:border-box}  
+body{margin:0;font-family:Tahoma, Arial;background:linear-gradient(180deg,#05070f,#0b0f1a);color:#fff;}  
+.ramadan-banner{position:sticky;top:0;z-index:20;background:linear-gradient(90deg,#ff8a3d,#ffb26b);text-align:center;padding:10px;font-weight:bold;color:#111;}  
+header{position:relative;text-align:center;padding:20px 14px 14px;}  
+.logo-bg{width:100%;max-width:380px;margin:10px auto 0;transition:opacity .3s;}  
+.logo-bg img{width:100%;opacity:.5;}  
+.store-title{font-size:20px;margin:8px 0}  
+.badge{display:inline-block;padding:8px 16px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;font-weight:bold;}  
+.search{margin:14px auto 10px;max-width:680px;}  
+.search input{width:100%;padding:14px;border-radius:999px;border:none;outline:none;background:#0f172a;color:#fff;}  
+.tabs-wrapper{position:relative;background:#0b0f1a;padding:10px 0;transition:all .3s;}  
+.tabs-wrapper.fixed{position:sticky;top:42px;z-index:19;border-bottom:1px solid #111827;}  
+.tabs{display:flex;gap:10px;overflow-x:auto;padding:0 10px;}  
+.tabs::-webkit-scrollbar{display:none}  
+.tab{padding:10px 16px;border-radius:999px;background:#0f172a;border:1px solid #111827;white-space:nowrap;cursor:pointer;}  
+.tab.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;font-weight:bold;}  
+.container{max-width:980px;margin:20px auto;padding:14px;}  
+.card{background:linear-gradient(180deg,#0f172a,#020617);border-radius:16px;padding:14px;margin-bottom:14px;border:1px solid #111827;}  
+.product{display:grid;grid-template-columns:140px 1fr;gap:14px;}  
+.img{width:140px;height:110px;background:#1f2937;border-radius:14px;display:flex;align-items:center;justify-content:center;}  
+.row{display:flex;justify-content:space-between;margin-top:10px;align-items:center;}  
+.btn{width:36px;height:36px;border:none;border-radius:12px;background:#0f172a;color:#fff;cursor:pointer;}  
+.btn.plus{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;}  
+.toggle-btns{margin-top:8px;display:flex;gap:10px;}  
+.toggle-btn{flex:1;padding:6px 0;border-radius:12px;border:none;cursor:pointer;background:#0f172a;color:#fff;}  
+.toggle-btn.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;font-weight:bold;}  
+.footer{position:sticky;bottom:0;background:#020617;padding:14px;}  
+.summary{max-width:980px;margin:auto;display:flex;justify-content:space-between;}  
+.cta{padding:14px 18px;border-radius:14px;border:none;background:linear-gradient(90deg,var(--accent),var(--accent2));font-weight:bold;}  
+#welcome{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:100;}  
+#welcome .content{background:#111827;padding:20px;border-radius:16px;text-align:center;}  
+#welcome button{margin-top:15px;padding:10px 20px;border:none;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent2));font-weight:bold;}  
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.7);z-index:200;}  
+.modal.active{display:flex;}  
+.box{background:#020617;border-radius:16px;padding:20px;max-width:400px;width:90%;}  
+.switch{display:flex; gap:10px; margin-bottom:14px;}  
+.sw{flex:1;text-align:center;padding:12px;cursor:pointer;border-radius:12px;background:#0f172a;}  
+.sw.active{background:linear-gradient(90deg,var(--accent),var(--accent2)); font-weight:bold; color:#111;}  
+.field input{width:100%;padding:12px;border-radius:12px;border:none;background:#0f172a;color:#fff;margin-bottom:10px;}  
+.actions{display:flex; gap:10px;}  
+.ghost{background:#0f172a; color:#fff;}  
+
+
+
+
+
+<style>
+/* CSS الموجود عندك كله ... */
+
 .actions{display:flex; gap:10px;}
 .ghost{background:#0f172a; color:#fff;}
+
+/* هنا نحط كود السلايدر */
+.slider-container {
+  position: relative;
+  max-width: 500px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 24px;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
 </style>
-</head>
-<body>
 
-<div class="ramadan-banner">✨ رمضان كريم ✨</div>
 
-<header>
-  <div class="logo-bg" id="logoBg">
-    <img src="https://i.postimg.cc/MTwbzZWg/file-00000000557c71f4bccda809a3278673.png.png">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>  
+
+</head>  
+<body>  <div class="ramadan-banner">✨ رمضان كريم ✨
+
+
+
+
+</div>  <header>  
+ 
+ 
+ <div class="slider-container">
+  <div class="slider">
+    <img src="https://i.postimg.cc/LXQstJ8G/file-00000000d8a071f4b035fef4d8c04bc4.png" class="slide active">
+    <img src="https://i.postimg.cc/MTwbzZWg/file-00000000557c71f4bccda809a3278673.png" class="slide">
+    <img src="رابط_الصورة_3" class="slide">
+    <img src="رابط_الصورة_4" class="slide">
   </div>
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+</div>
+
+
+
+<div class="badge">متجر موثوق</div>  <!-- أيقونات السوشيال -->  <div class="social-icons" style="margin-top:10px; display:flex; justify-content:center; gap:12px;">  
+  <a href="https://www.facebook.com/share/17RQKSHdkL/" id="linkWhats" target="_blank">  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#25D366" width="36" height="36">  
+      <path d="M12.04 2C6.48 2 2 6.48 2 12c0 2.12.61 4.07 1.65 5.71L2 22l4.33-1.65C7.93 21.39 9.88 22 12 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm5.44 14.5c-.23.66-1.31 1.26-1.8 1.34-.46.08-1.03.11-2.43-.57-2.4-1.07-3.93-3.7-4.05-3.88-.12-.18-1-1.24-1-2.37 0-1.13.66-1.6.9-1.82.24-.23.52-.28.7-.28.18 0 .35 0 .5.01.16.01.37-.06.57.42.19.48.64 1.66.7 1.78.06.12.1.27.02.43-.07.15-.11.25-.23.39-.12.14-.25.31-.35.44-.12.14-.25.28-.11.56.14.28.61 1.01 1.31 1.63.9.8 1.66 1.05 1.88 1.17.22.12.35.1.48-.06.12-.16.5-.58.63-.78.13-.2.27-.16.46-.1.19.06 1.2.56 1.41.66.21.1.35.15.4.23.05.09.05.52-.18 1.18z"/>  
+    </svg>  
+  </a>  
+  <a href="https://www.facebook.com/share/17RQKSHdkL/" id="linkFB" target="_blank">  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#1877F2" width="36" height="36">  
+      <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.494v-9.294H9.691v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.796.143v3.24l-1.918.001c-1.504 0-1.796.716-1.796 1.765v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.675V1.325C24 .593 23.407 0 22.675 0z"/>  
+    </svg>  
+  </a>  
+  <a href="https://www.facebook.com/share/17RQKSHdkL/" id="linkTT" target="_blank">  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FFFFFF" width="36" height="36">  
+      <path d="M12.004 2.002v12.312c-.002 3.214-2.616 5.824-5.83 5.826-3.21.002-5.824-2.61-5.826-5.824s2.614-5.824 5.824-5.826h.002v2.626h-.002c-1.763 0-3.198 1.435-3.198 3.2s1.435 3.198 3.2 3.198c1.767 0 3.202-1.433 3.2-3.2V5.994h4.005c.016 1.105.92 2.007 2.028 2.025v4.286c-3.096-.156-5.558-2.677-5.644-5.768z"/>  
+    </svg>  
+  </a>  
+</div>  
+  <div class="search"><input placeholder="ابحث عن منتج…"></div>    <div class="tabs-wrapper" id="tabsWrap">  
+    <div class="tabs">  
+      <div class="tab active" onclick="setCat('الأسماك',this)">الأسماك</div>  
+      <div class="tab" onclick="setCat('الطواجن',this)">الطواجن</div>  
+      <div class="tab" onclick="setCat('الوجبات',this)">الوجبات</div>  
+      <div class="tab" onclick="setCat('المكرونات',this)">المكرونات</div>  
+      <div class="tab" onclick="setCat('المقبلات',this)">المقبلات</div>  
+      <div class="tab" onclick="setCat('السندوتشات',this)">السندوتشات</div>  
+      <div class="tab" onclick="setCat('الأرز',this)">الأرز</div>  
+      <div class="tab" onclick="setCat('الشوربة',this)">الشوربة</div>  
+    </div>  
+  </div>  
+</header>  <div class="container" id="list"></div>  <div class="footer">  
+  <div class="summary">  
+    <div>الإجمالي: <b id="total">0</b> ريال</div>  
+    <button class="cta" onclick="openConfirm()">تأكيد الطلب</button>  
+  </div>  
+</div>  <div id="welcome">  
+  <div class="content">  
+     ‏شكرا لك على تواصلك مع مطعم هامور المدينة للمأكولات البحرية. 🐠🐟🐬  
+    <br>  
+    <button onclick="this.parentElement.parentElement.style.display='none'">موافق</button>  
+  </div>  
+</div>  <div class="modal" id="modal">  
+  <div class="box">  
+    <h3>تأكيد طلبك</h3>  
+    <div class="switch">  
+      <div class="sw active" id="swIn" onclick="setMode('in')">🍽️ بالمطعم</div>  
+      <div class="sw" id="swOut" onclick="setMode('out')">🛵 توصيل</div>  
+    </div>  
+    <div class="field" id="tableField"><input id="tableNo" placeholder="أدخل رقم الطاولة"></div>  
+    <div class="actions">  
+      <button class="cta" onclick="sendWhats()">تأكيد وإرسال واتساب</button>  
+      <button class="cta ghost" onclick="closeConfirm()">رجوع</button>  
+    </div>  
+  </div>  
+</div>  <script>  
+const WHATSAPP_NUMBER = '+966511868061';  
+let currentCat='الأسماك';  
+let order={items:[],total:0};  
   
-  <div class="badge">متجر موثوق</div>
+// المنتجات  
+const products=[  
+  {id:1,cat:'الأسماك',name:'هامور',price:80},{id:2,cat:'الأسماك',name:'ناجل',price:130},  
+  {id:3,cat:'الأسماك',name:'شعور',price:50},{id:4,cat:'الأسماك',name:'سلطان إبراهيم',price:40},  
+  {id:5,cat:'الأسماك',name:'سلمون',price:100},{id:6,cat:'الأسماك',name:'استاكوزا',price:100},  
+  {id:7,cat:'الأسماك',name:'كباية',price:60},{id:8,cat:'الأسماك',name:'كابوريا',price:45},  
+  {id:9,cat:'الأسماك',name:'بلطي مقلي مشوي',price:25},{id:10,cat:'الأسماك',name:'بوري',price:45},  
+  {id:11,cat:'الأسماك',name:'قاروص',price:60},{id:12,cat:'الأسماك',name:'دنيس',price:55},  
+  {id:13,cat:'الأسماك',name:'حمام',price:50},{id:14,cat:'الأسماك',name:'ماكريل',price:25},  
+  
+  {id:15,cat:'الطواجن',name:'طاجن جمبري صوص أحمر',price:30},{id:16,cat:'الطواجن',name:'طاجن جمبري صوص أبيض',price:35},  
+  {id:17,cat:'الطواجن',name:'طاجن سي فود صوص أبيض',price:35},{id:18,cat:'الطواجن',name:'طاجن فيليه صوص أبيض',price:28},  
+  {id:19,cat:'الطواجن',name:'طاجن فيليه صوص أحمر',price:20},  
+  
+  {id:20,cat:'الوجبات',name:'وجبة سمك بلطي',price:25},{id:21,cat:'الوجبات',name:'وجبة سمك بوري',price:40},  
+  {id:22,cat:'الوجبات',name:'وجبة فيليه',price:25},{id:23,cat:'الوجبات',name:'وجبة جمبري مقلي',price:25},  
+  {id:24,cat:'الوجبات',name:'وجبة جمبري بروستد',price:40},{id:25,cat:'الوجبات',name:'وجبة جمبري مشوي',price:40},  
+  {id:26,cat:'الوجبات',name:'وجبة مكس مشوي أو مقلي',price:35},{id:27,cat:'الوجبات',name:'وجبة ماكريل',price:20},  
+  
+  {id:28,cat:'المكرونات',name:'مكرونة جمبري صوص أحمر',price:20},{id:29,cat:'المكرونات',name:'مكرونة جمبري صوص أبيض',price:25},  
+  {id:30,cat:'المكرونات',name:'مكرونة سي فود صوص أبيض',price:25},{id:31,cat:'المكرونات',name:'مكرونة سي فود صوص أحمر',price:20},  
+  
+  {id:32,cat:'المقبلات',name:'ملوخية جمبري',price:15},{id:33,cat:'المقبلات',name:'ملوخية سادة',price:5},  
+  {id:34,cat:'المقبلات',name:'سلطة خضراء',price:4},{id:35,cat:'المقبلات',name:'سلطة بابا غنوج',price:4},  
+  {id:36,cat:'المقبلات',name:'سلطة طحينة',price:1},{id:37,cat:'المقبلات',name:'سلطة حار',price:1},  
+  
+  {id:38,cat:'السندوتشات',name:'سندوتش جمبري',price:15},{id:39,cat:'السندوتشات',name:'سندوتش فيليه',price:10},  
+  {id:40,cat:'السندوتشات',name:'سندوتش كالماري',price:12},  
+  
+  {id:41,cat:'الأرز',name:'أرز سي فود',price:18},{id:42,cat:'الأرز',name:'أرز جمبري',price:10},  
+  {id:43,cat:'الأرز',name:'أرز صيادية',price:7},{id:44,cat:'الأرز',name:'أرز أبيض',price:6},  
+  
+  {id:45,cat:'الشوربة',name:'شوربة سي فود',price:20},{id:46,cat:'الشوربة',name:'شوربة جمبري',price:15}  
+];  
+  
+const list=document.getElementById('list');  
+  
+function render(){  
+  list.innerHTML='';  
+  products.filter(p=>p.cat===currentCat).forEach(p=>{  
+    let it=order.items.find(x=>x.id===p.id);  
+    if(!it){it={id:p.id,price:p.price,qty:0,name:p.name,type:'عادي'}; order.items.push(it);}  
+    list.innerHTML+=`  
+      <div class="card">  
+        <div class="product">  
+          <div class="img">صورة</div>  
+          <div>  
+            <b>${p.name}</b>  
+            <div class="row">  
+              <div id="price-${p.id}">${it.price} ريال</div>  
+              <div>  
+                <button class="btn" onclick="dec(${p.id})">-</button>  
+                ${it.qty}  
+                <button class="btn plus" onclick="inc(${p.id})">+</button>  
+              </div>  
+            </div>  
+            <div class="toggle-btns">  
+              <button class="toggle-btn ${it.type==='عادي'?'active':''}" onclick="setType(${p.id},'عادي')">عادي</button>  
+              <button class="toggle-btn ${it.type==='حراري'?'active':''}" onclick="setType(${p.id},'حراري')">حراري</button>  
+            </div>  
+          </div>  
+        </div>  
+      </div>`;  
+  });  
+  calc();  
+}  
+  
+function setType(id,type){  
+  let it=order.items.find(x=>x.id===id);  
+  if(!it) return;  
+  it.type=type;  
+  it.price = type==='عادي' ? products.find(x=>x.id===id).price : products.find(x=>x.id===id).price+5;  
+  render();  
+}  
+  
+function setCat(c,e){  
+  currentCat=c;  
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));  
+  e.classList.add('active');  
+  render();  
+}  
+  
+function inc(id){  
+  let it=order.items.find(x=>x.id===id);  
+  if(!it) return;  
+  it.qty++; render();  
+}  
+  
+function dec(id){  
+  let it=order.items.find(x=>x.id===id);  
+  if(!it) return;  
+  it.qty--;  
+  if(it.qty<=0) order.items=order.items.filter(x=>x.id!==id);  
+  render();  
+}  
+  
+function calc(){  
+  document.getElementById('total').innerText=  
+    order.items.reduce((s,i)=>s+i.price*i.qty,0);  
+}  
+  
+const logo=document.getElementById('logoBg');  
+const tabsWrap=document.getElementById('tabsWrap');  
+window.addEventListener('scroll',()=>{  
+  if(window.scrollY===0){logo.style.opacity='1';tabsWrap.classList.remove('fixed');}  
+  else{logo.style.opacity='0';tabsWrap.classList.add('fixed');}  
+});  
+  
+const modal=document.getElementById('modal');  
+let mode='in';  
+function openConfirm(){modal.classList.add('active');}  
+function setMode(m){  
+  mode=m;  
+  document.getElementById('swIn').classList.toggle('active', m==='in');  
+  document.getElementById('swOut').classList.toggle('active', m==='out');  
 
-<!-- أيقونات السوشيال -->
-<div class="social-icons" style="margin-top:10px; display:flex; justify-content:center; gap:12px;">
-  <a href="https://www.facebook.com/share/17RQKSHdkL/" id="linkWhats" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#25D366" width="36" height="36">
-      <path d="M12.04 2C6.48 2 2 6.48 2 12c0 2.12.61 4.07 1.65 5.71L2 22l4.33-1.65C7.93 21.39 9.88 22 12 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm5.44 14.5c-.23.66-1.31 1.26-1.8 1.34-.46.08-1.03.11-2.43-.57-2.4-1.07-3.93-3.7-4.05-3.88-.12-.18-1-1.24-1-2.37 0-1.13.66-1.6.9-1.82.24-.23.52-.28.7-.28.18 0 .35 0 .5.01.16.01.37-.06.57.42.19.48.64 1.66.7 1.78.06.12.1.27.02.43-.07.15-.11.25-.23.39-.12.14-.25.31-.35.44-.12.14-.25.28-.11.56.14.28.61 1.01 1.31 1.63.9.8 1.66 1.05 1.88 1.17.22.12.35.1.48-.06.12-.16.5-.58.63-.78.13-.2.27-.16.46-.1.19.06 1.2.56 1.41.66.21.1.35.15.4.23.05.09.05.52-.18 1.18z"/>
-    </svg>
-  </a>
-  <a href="https://www.facebook.com/share/17RQKSHdkL/" id="linkFB" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#1877F2" width="36" height="36">
-      <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.494v-9.294H9.691v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.796.143v3.24l-1.918.001c-1.504 0-1.796.716-1.796 1.765v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.675V1.325C24 .593 23.407 0 22.675 0z"/>
-    </svg>
-  </a>
-  <a href="https://www.facebook.com/share/17RQKSHdkL/" id="linkTT" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FFFFFF" width="36" height="36">
-      <path d="M12.004 2.002v12.312c-.002 3.214-2.616 5.824-5.83 5.826-3.21.002-5.824-2.61-5.826-5.824s2.614-5.824 5.824-5.826h.002v2.626h-.002c-1.763 0-3.198 1.435-3.198 3.2s1.435 3.198 3.2 3.198c1.767 0 3.202-1.433 3.2-3.2V5.994h4.005c.016 1.105.92 2.007 2.028 2.025v4.286c-3.096-.156-5.558-2.677-5.644-5.768z"/>
-    </svg>
-  </a>
-</div>
-  <div class="search"><input placeholder="ابحث عن منتج…"></div>
+  // التعديل: بدل إظهار حقل الطاولة، نعرض رسالة للتوصيل
+  const tableField=document.getElementById('tableField');  
+  if(m==='in'){  
+    tableField.style.display='block';  
+    tableField.innerHTML=`<input id="tableNo" placeholder="أدخل رقم الطاولة">`;  
+  }else{  
+    tableField.style.display='block';  
+    tableField.innerHTML=`<div style="padding:12px;background:#1f2937;border-radius:12px;text-align:center;">قريبًا فتح التوصيل إلى المنزل 🛵</div>`;  
+  }  
+}
+  
+function sendWhats() {
+  // فلترة العناصر اللي الكمية أكبر من صفر فقط
+  const selectedItems = order.items.filter(i => i.qty > 0);
 
-  <div class="tabs-wrapper" id="tabsWrap">
-    <div class="tabs">
-      <div class="tab active" onclick="setCat('الأسماك',this)">الأسماك</div>
-      <div class="tab" onclick="setCat('الطواجن',this)">الطواجن</div>
-      <div class="tab" onclick="setCat('الوجبات',this)">الوجبات</div>
-      <div class="tab" onclick="setCat('المكرونات',this)">المكرونات</div>
-      <div class="tab" onclick="setCat('المقبلات',this)">المقبلات</div>
-      <div class="tab" onclick="setCat('السندوتشات',this)">السندوتشات</div>
-      <div class="tab" onclick="setCat('الأرز',this)">الأرز</div>
-      <div class="tab" onclick="setCat('الشوربة',this)">الشوربة</div>
-    </div>
-  </div>
-</header>
+  if(selectedItems.length === 0) {
+    alert('اختَر منتجات أولاً');
+    return;
+  }
 
-<div class="container" id="list"></div>
+  // التاريخ والوقت الحالي
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('ar-EG');
+  const timeStr = now.toLocaleTimeString('ar-EG');
 
-<div class="footer">
-  <div class="summary">
-    <div>الإجمالي: <b id="total">0</b> ريال</div>
-    <button class="cta" onclick="openConfirm()">تأكيد الطلب</button>
-  </div>
-</div>
-
-<div id="welcome">
-  <div class="content">
-     ‏شكرا لك على تواصلك مع مطعم هامور المدينة للمأكولات البحرية. 🐠🐟🐬
-    <br>
-    <button onclick="this.parentElement.parentElement.style.display='none'">موافق</button>
-  </div>
-</div>
-
-<div class="modal" id="modal">
-  <div class="box">
-    <h3>تأكيد طلبك</h3>
-    <div class="switch">
-      <div class="sw active" id="swIn" onclick="setMode('in')">🍽️ بالمطعم</div>
-      <div class="sw" id="swOut" onclick="setMode('out')">🛵 توصيل</div>
-    </div>
-    <div class="field" id="tableField"><input id="tableNo" placeholder="أدخل رقم الطاولة"></div>
-    <div class="actions">
-      <button class="cta" onclick="sendWhats()">تأكيد وإرسال واتساب</button>
-      <button class="cta ghost" onclick="closeConfirm()">رجوع</button>
-    </div>
-  </div>
-</div>
-
-<script>
-const WHATSAPP_NUMBER = '+966511868061';
-let currentCat='الأسماك';
-let order={items:[],total:0};
-
-// المنتجات
-const products=[
-  {id:1,cat:'الأسماك',name:'هامور',price:80},{id:2,cat:'الأسماك',name:'ناجل',price:130},
-  {id:3,cat:'الأسماك',name:'شعور',price:50},{id:4,cat:'الأسماك',name:'سلطان إبراهيم',price:40},
-  {id:5,cat:'الأسماك',name:'سلمون',price:100},{id:6,cat:'الأسماك',name:'استاكوزا',price:100},
-  {id:7,cat:'الأسماك',name:'كباية',price:60},{id:8,cat:'الأسماك',name:'كابوريا',price:45},
-  {id:9,cat:'الأسماك',name:'بلطي مقلي مشوي',price:25},{id:10,cat:'الأسماك',name:'بوري',price:45},
-  {id:11,cat:'الأسماك',name:'قاروص',price:60},{id:12,cat:'الأسماك',name:'دنيس',price:55},
-  {id:13,cat:'الأسماك',name:'حمام',price:50},{id:14,cat:'الأسماك',name:'ماكريل',price:25},
-
-  {id:15,cat:'الطواجن',name:'طاجن جمبري صوص أحمر',price:30},{id:16,cat:'الطواجن',name:'طاجن جمبري صوص أبيض',price:35},
-  {id:17,cat:'الطواجن',name:'طاجن سي فود صوص أبيض',price:35},{id:18,cat:'الطواجن',name:'طاجن فيليه صوص أبيض',price:28},
-  {id:19,cat:'الطواجن',name:'طاجن فيليه صوص أحمر',price:20},
-
-  {id:20,cat:'الوجبات',name:'وجبة سمك بلطي',price:25},{id:21,cat:'الوجبات',name:'وجبة سمك بوري',price:40},
-  {id:22,cat:'الوجبات',name:'وجبة فيليه',price:25},{id:23,cat:'الوجبات',name:'وجبة جمبري مقلي',price:25},
-  {id:24,cat:'الوجبات',name:'وجبة جمبري بروستد',price:40},{id:25,cat:'الوجبات',name:'وجبة جمبري مشوي',price:40},
-  {id:26,cat:'الوجبات',name:'وجبة مكس مشوي أو مقلي',price:35},{id:27,cat:'الوجبات',name:'وجبة ماكريل',price:20},
-
-  {id:28,cat:'المكرونات',name:'مكرونة جمبري صوص أحمر',price:20},{id:29,cat:'المكرونات',name:'مكرونة جمبري صوص أبيض',price:25},
-  {id:30,cat:'المكرونات',name:'مكرونة سي فود صوص أبيض',price:25},{id:31,cat:'المكرونات',name:'مكرونة سي فود صوص أحمر',price:20},
-
-  {id:32,cat:'المقبلات',name:'ملوخية جمبري',price:15},{id:33,cat:'المقبلات',name:'ملوخية سادة',price:5},
-  {id:34,cat:'المقبلات',name:'سلطة خضراء',price:4},{id:35,cat:'المقبلات',name:'سلطة بابا غنوج',price:4},
-  {id:36,cat:'المقبلات',name:'سلطة طحينة',price:1},{id:37,cat:'المقبلات',name:'سلطة حار',price:1},
-
-  {id:38,cat:'السندوتشات',name:'سندوتش جمبري',price:15},{id:39,cat:'السندوتشات',name:'سندوتش فيليه',price:10},
-  {id:40,cat:'السندوتشات',name:'سندوتش كالماري',price:12},
-
-  {id:41,cat:'الأرز',name:'أرز سي فود',price:18},{id:42,cat:'الأرز',name:'أرز جمبري',price:10},
-  {id:43,cat:'الأرز',name:'أرز صيادية',price:7},{id:44,cat:'الأرز',name:'أرز أبيض',price:6},
-
-  {id:45,cat:'الشوربة',name:'شوربة سي فود',price:20},{id:46,cat:'الشوربة',name:'شوربة جمبري',price:15}
-];
-
-const list=document.getElementById('list');
-
-function render(){
-  list.innerHTML='';
-  products.filter(p=>p.cat===currentCat).forEach(p=>{
-    let it=order.items.find(x=>x.id===p.id);
-    if(!it){it={id:p.id,price:p.price,qty:0,name:p.name,type:'عادي'}; order.items.push(it);}
-    list.innerHTML+=`
-      <div class="card">
-        <div class="product">
-          <div class="img">صورة</div>
-          <div>
-            <b>${p.name}</b>
-            <div class="row">
-              <div id="price-${p.id}">${it.price} ريال</div>
-              <div>
-                <button class="btn" onclick="dec(${p.id})">-</button>
-                ${it.qty}
-                <button class="btn plus" onclick="inc(${p.id})">+</button>
-              </div>
-            </div>
-            <div class="toggle-btns">
-              <button class="toggle-btn ${it.type==='عادي'?'active':''}" onclick="setType(${p.id},'عادي')">عادي</button>
-              <button class="toggle-btn ${it.type==='حراري'?'active':''}" onclick="setType(${p.id},'حراري')">حراري</button>
-            </div>
-          </div>
-        </div>
-      </div>`;
+  // بناء الرسالة
+  let msg = `طلب جديد:%0A`;
+  selectedItems.forEach(i => {
+    msg += `- ${i.name} (${i.type}) × ${i.qty} = ${i.price * i.qty} ريال%0A`;
   });
-  calc();
+
+  const total = selectedItems.reduce((s, i) => s + i.price * i.qty, 0);
+  msg += `%0Aالإجمالي: ${total} ريال`;
+
+  if(mode === 'in') {
+    const t = document.getElementById('tableNo').value || 'غير محدد';
+    msg += `%0Aرقم الطاولة: ${t}`;
+  } else {
+    msg += `%0Aطريقة التوصيل: توصيل`;
+  }
+
+  msg += `%0Aالتاريخ: ${dateStr} - الوقت: ${timeStr}`;
+
+  // فتح واتساب
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+
+  // إغلاق المودال بعد الإرسال
+  closeConfirm();
+}  
+  
+
+// 🔹 السطر الجديد اللي هيفتح المودال ويقفل
+function closeConfirm(){
+  modal.classList.remove('active');
+}
+  
+  
+  
+  
+  
+  
+  
+render();  
+
+
+
+
+
+
+
+
+
+
+const slides = document.querySelectorAll('.slide');
+let currentIndex = 0;
+
+slides[currentIndex].classList.add('active');
+
+let interval = setInterval(nextSlide, 5000);
+
+function showSlide(index) {
+  slides.forEach((s,i)=>s.classList.remove('active'));
+  slides[index].classList.add('active');
 }
 
-function setType(id,type){
-  let it=order.items.find(x=>x.id===id);
-  if(!it) return;
-  it.type=type;
-  it.price = type==='عادي' ? products.find(x=>x.id===id).price : products.find(x=>x.id===id).price+5;
-  render();
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % slides.length;
+  showSlide(currentIndex);
 }
 
-function setCat(c,e){
-  currentCat=c;
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  e.classList.add('active');
-  render();
+function prevSlide() {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  showSlide(currentIndex);
 }
 
-function inc(id){
-  let it=order.items.find(x=>x.id===id);
-  if(!it) return;
-  it.qty++; render();
-}
-
-function dec(id){
-  let it=order.items.find(x=>x.id===id);
-  if(!it) return;
-  it.qty--;
-  if(it.qty<=0) order.items=order.items.filter(x=>x.id!==id);
-  render();
-}
-
-function calc(){
-  document.getElementById('total').innerText=
-    order.items.reduce((s,i)=>s+i.price*i.qty,0);
-}
-
-const logo=document.getElementById('logoBg');
-const tabsWrap=document.getElementById('tabsWrap');
-window.addEventListener('scroll',()=>{
-  if(window.scrollY===0){logo.style.opacity='1';tabsWrap.classList.remove('fixed');}
-  else{logo.style.opacity='0';tabsWrap.classList.add('fixed');}
+document.querySelector('.next').addEventListener('click', ()=>{
+  nextSlide();
+  resetInterval();
+});
+document.querySelector('.prev').addEventListener('click', ()=>{
+  prevSlide();
+  resetInterval();
 });
 
-const modal=document.getElementById('modal');
-let mode='in';
-function openConfirm(){modal.classList.add('active');}
-function closeConfirm(){modal.classList.remove('active');}
-function setMode(m){
-  mode=m;
-  document.getElementById('swIn').classList.toggle('active', m==='in');
-  document.getElementById('swOut').classList.toggle('active', m==='out');
-  document.getElementById('tableField').style.display = m==='in'?'block':'none';
+function resetInterval() {
+  clearInterval(interval);
+  interval = setInterval(nextSlide, 5000);
 }
 
-function sendWhats(){
-  if(order.items.length===0){alert('اختَر منتجات أولاً'); return;}
-  let msg='طلب جديد:%0A';
-  order.items.forEach(i=>{msg+=`- ${i.name} (${i.type}) × ${i.qty} = ${i.price*i.qty} ريال%0A`;});
-  msg+=`%0Aالإجمالي: ${order.items.reduce((s,i)=>s+i.price*i.qty,0)} ريال`;
-  if(mode==='in'){
-    const t=document.getElementById('tableNo').value||'غير محدد';
-    msg+=`%0Aرقم الطاولة: ${t}`;
-  }else{msg+=`%0Aطريقة التوصيل: توصيل`;}
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,'_blank');
-}
 
-render();
-</script>
-</body>
-  </html>
+
+
+
+
+
+
+
+</script>  </body>  <style>  
+.ramadan-item {  
+  position: fixed;  
+  top: -40px;  
+  user-select: none;  
+  pointer-events: none;  
+  z-index: 9999;  
+  animation-name: ramadanFall;  
+  animation-timing-function: linear;  
+  animation-fill-mode: forwards;  
+}  
+  
+@keyframes ramadanFall {  
+  0% {  
+    transform: translateY(0) rotate(0deg);  
+    opacity: 0;  
+  }  
+  10% { opacity: 1; }  
+  100% {  
+    transform: translateY(120vh) rotate(360deg);  
+    opacity: 1;  
+  }  
+}  
+</style>  <script>  
+const ramadanIcons = ["🐬","🐟","🐠","️🐙","🦀","🦐"];  
+const MAX_ITEMS = 10; // 👈 الكمية على الشاشة  
+const SPAWN_RATE = 450; // 👈 كل قد ايه ينزل واحد (كل 0.25 ثانية)  
+  
+function spawnRamadan() {  
+  if (document.querySelectorAll('.ramadan-item').length > MAX_ITEMS) return;  
+  
+  const item = document.createElement("div");  
+  item.className = "ramadan-item";  
+  item.innerHTML = ramadanIcons[Math.floor(Math.random() * ramadanIcons.length)];  
+  
+  item.style.left = Math.random() * window.innerWidth + "px";  
+  item.style.fontSize = (Math.random() * 16 + 18) + "px";  
+  item.style.opacity = Math.random();  
+  item.style.animationDuration = (Math.random() * 12 + 18) + "s"; // 👈 نزول بطيء  
+  
+  document.body.appendChild(item);  
+  
+  setTimeout(() => {  
+    item.remove();  
+  }, 30000);  
+}  
+  
+// نزول مستمر بلا توقف  
+setInterval(spawnRamadan, SPAWN_RATE);  
+</script>  </html>   
